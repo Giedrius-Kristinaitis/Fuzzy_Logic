@@ -3,9 +3,9 @@ import skfuzzy as fuzz
 import matplotlib.pyplot as plt
 
 # input variables
-input_participants = 150
+input_participants = 120
 input_available_slots = 15
-input_test_difficulty = 6
+input_test_difficulty = 5
 
 # create universes
 participants = np.arange(50, 201, 1)
@@ -80,7 +80,7 @@ test_difficulty_value_high = fuzz.interp_membership(test_difficulty, test_diffic
 
 # apply rules
 value_rule_1 = np.fmax(np.fmax(participants_value_high, available_slots_value_low), test_difficulty_value_high)
-value_rule_2 = np.fmin(np.fmax(participants_value_medium, test_difficulty_value_medium), 1 - available_slots_value_low)
+value_rule_2 = np.fmin(np.fmin(1 - participants_value_high, 1 - test_difficulty_value_high), 1 - available_slots_value_low)
 value_rule_3 = np.fmax(test_difficulty_value_low, np.fmax(1 - participants_value_high, 1 - available_slots_value_low))
 
 acceptance_probability_value_low = np.fmin(value_rule_1, acceptance_probability_low)

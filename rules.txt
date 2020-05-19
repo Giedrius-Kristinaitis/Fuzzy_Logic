@@ -1,5 +1,5 @@
 IF participants IS high OR available_slots IS low OR test_difficulty IS high THEN probability IS low
 
-IF (participants IS medium OR test_difficulty IS medium) AND available_slots IS NOT low THEN probability IS medium
+IF participants IS NOT high AND test_difficulty IS NOT high AND available_slots IS NOT low THEN probability IS medium
 
 IF test_difficulty IS low OR (participants IS NOT high OR available_slots IS NOT low) THEN probability IS high
